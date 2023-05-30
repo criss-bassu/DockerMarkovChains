@@ -1,0 +1,21 @@
+version: "3"
+services:
+  practica2:
+    image: cbaronsuarez/practica2:latest
+    deploy:
+      replicas: 5
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "80:4567"
+    environment:
+      - REDIS_HOST=redis
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+

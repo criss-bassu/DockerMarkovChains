@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-practica2-deploy
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+        app: app-practica2
+  template:
+    metadata:
+      labels:
+        app: app-practica2
+    spec:
+      containers:
+      - name: app-practica2
+        image: cbaronsuarez/practica2:latest
+        env:
+        - name: REDIS_HOST
+          value: "redis"
+        ports:
+        - containerPort: 4567

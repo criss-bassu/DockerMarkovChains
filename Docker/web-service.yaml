@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-practica2-service
+  labels:
+    app: app-practica2
+spec:
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 4567
+    targetPort: 4567
+    nodePort: 30101
+  selector:
+    app: app-practica2
